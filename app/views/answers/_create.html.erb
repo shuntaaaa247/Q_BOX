@@ -1,0 +1,8 @@
+<hr/>
+<h4>新しい選択肢</h4>
+<%= form_with model: Answer.new, local: true do |f| %>
+  <%= f.text_field :username, class: "", placeholder: "ユーザー名", required: true %>
+  <%= f.text_field :description, class: "", placeholder: "新しい選択肢", required: true %>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.submit "選択肢を追加する", class: "btn btn-primary" %>
+<% end %>

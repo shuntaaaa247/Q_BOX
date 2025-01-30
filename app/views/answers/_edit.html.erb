@@ -1,0 +1,7 @@
+
+<% @question.answers.each do |a| %>
+<%= button_to a.description + " | " + a.like.to_s, answer_path, method: :patch, params: {answer: a}, type: "button", class: "btn btn-outline-secondary w-100  py-2 my-1" %>
+<p class="text-sm fw-lighter text-secondary"><%= a.username %></p>
+<% end %>
+
+<%= render partial: "answers/create"%>

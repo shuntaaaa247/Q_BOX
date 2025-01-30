@@ -1,0 +1,16 @@
+<h1>Q BOX 簡単にアンケート作成</h1>
+<h2>みんなの意見を集めるためのプラットフォーム</h2>
+<br />
+
+<%= form_with url: "questions/search", method: :get, local: true do |f| %>
+  <%= f.text_field :query, placeholder: "検索ワードを入力" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= link_to "アンケートを作成する", controller: "questions", action: "new" %>
+<ul>
+  <% @questions&.each {|q| %>
+  <%# question_pathはroutes.rbに指定したquestion#show用のパス? %>
+    <li><%= q.id %> <%= link_to q.description, question_path(q) %></li> 
+  <% } %>
+</ul>
