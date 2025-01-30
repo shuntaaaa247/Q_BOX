@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get "answers/create"
-  root "questions#index"
+  root "questions#index" # ルートパス アンケートの一覧ページ
 
   resources :questions, only: [ :show, :new, :create ] do
-    get "list", on: :member
-    get "search", on: :collection, to: "questions#search"
-    get "download_json", on: :member
+    get "list", on: :member # アンケート結果のJSON形式での表示(/questions/[question_id]/list)
+    get "search", on: :collection, to: "questions#search" # アンケートの検索結果を表示(/questions/search?query=“検索ワード”)
+    get "download_json", on: :member # アンケート結果のJSONファイルをダウンロード(/questions/[question_id]/download_json)
   end
   resources :answers, only: [ :show, :new, :create, :update ]
   # GETメソッドで"questions/:id"がリクエストされたら、questionsコントローラーのshowを呼び出す。as: ~はerbファイルなどで遷移を記述する時に指定するパス?

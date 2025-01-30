@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema[8.0].define(version: 2025_01_25_153727) do
   create_table "answers", force: :cascade do |t|
-    t.string "username", null: false
-    t.text "description", null: false
-    t.integer "like", default: 0
+    t.string "username", null: false # 選択肢を作成したユーザーの名前
+    t.text "description", null: false # 選択肢の内容
+    t.integer "like", default: 0 # 選択肢の投票数
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "question_id", null: false
+    t.integer "question_id", null: false # 親のアンケート(Question)のid
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "description", null: false
-    t.datetime "created_at", null: false
+    t.string "username", null: false # アンケートを作成性たユーザーの名前
+    t.string "description", null: false # アンケートの質問内容
+    t.datetime "created_at", null: false 
     t.datetime "updated_at", null: false
   end
 
